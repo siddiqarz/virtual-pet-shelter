@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 public class VirtualPetShelter {
-Map<String, VirtualPet> pets = new HashMap<>();
+Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
 	public Collection<VirtualPet> getAllPets() {
 		return pets.values();
 	}
@@ -31,5 +31,14 @@ public void waterAll() {
 public void playWithPet(String petName, int playTime) {
 	VirtualPet playWith = findPet(petName);
 	playWith.play(playTime);
+}
+
+public void tick() {
+	for(VirtualPet eachPet :getAllPets()) {
+		eachPet.tickIt();
+	}
+}
+public void remove(VirtualPet pet) {
+	pets.remove(pet.getPetName(), pet);
 }
 }

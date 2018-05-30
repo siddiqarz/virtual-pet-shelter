@@ -39,12 +39,12 @@ public class VirtualPetShelterTest {
 		VirtualPet retrievedPet = underTest.findPet("a");
 		assertThat(retrievedPet, is(pet1));
 	}
-//@Test
-//public void shouldDecreaseHungerOfAll() {
-//	VirtualPet pet2 = new VirtualPet("", "", 5, 3, 2);
-//underTest.feedAll();
-//assertEquals(0, pet2.getHunger());
-//}
+@Test
+public void shouldDecreaseHungerOfAll() {
+	VirtualPet pet2 = new VirtualPet("", "", 5, 3, 2);
+pet2.feed();
+assertEquals(0, pet2.getHunger());
+}
 
 @Test
 public void shouldDecreaseThirstOfAll() {
@@ -54,6 +54,12 @@ public void shouldDecreaseThirstOfAll() {
 public void playWithEachPet() {
 	underTest.add(pet1);
 	underTest.playWithPet(pet1.getPetName(), 10);
-	assertThat(pet1.getBoredom(), is(-10));
+	assertThat(pet1.getBoredom(), is(0));
+}
+public void parametersShouldChangeOverTime() {
+	int boredomBefore = pet1.getBoredom();
+	underTest.tick();
+	int boredomAfter = pet1.getBoredom();
+	assertTrue(boredomBefore<boredomAfter);
 }
 }
