@@ -40,7 +40,7 @@ public class VirtualPetShelterTest {
 		assertThat(retrievedPet, is(pet1));
 	}
 @Test
-public void shouldDecreaseHungerOfAll() {
+public void shouldDecreaseHunger() {
 	VirtualPet pet2 = new VirtualPet("", "", 5, 3, 2);
 pet2.feed();
 assertEquals(0, pet2.getHunger());

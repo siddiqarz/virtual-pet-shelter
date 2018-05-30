@@ -14,7 +14,7 @@ public class VirtualPet {
 
 	public VirtualPet(String petName, String description) {
 		this.petName = petName;
-		this.description = description;
+		this.setDescription(description);
 	}
 
 	public VirtualPet(String petName, String Description, int hunger, int thirst, int boredom) {
@@ -66,5 +66,13 @@ public class VirtualPet {
 		hunger = rand.nextInt(5) + 1;
 		thirst = rand.nextInt(5) + 1;
 		boredom = rand.nextInt(5) + 1;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

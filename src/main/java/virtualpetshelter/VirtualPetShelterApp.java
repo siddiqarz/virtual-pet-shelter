@@ -1,6 +1,7 @@
 package virtualpetshelter;
 
-import java.util.Random;
+import static org.hamcrest.Matchers.closeTo;
+
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
@@ -51,7 +52,10 @@ public class VirtualPetShelterApp {
 				myPet.waterAll();
 			} else if (userChoice == 3) {
 				int playTime;
-				System.out.println("What pet would you like to play with?");
+				System.out.println("Ok, so you'd like to play! Please choose one: ");
+				for (VirtualPet eachPet : myPet.getAllPets()) {
+				System.out.println("[" + eachPet.getPetName() + "]" +"  "+ eachPet.getDescription());
+				}
 				String petChoice = input.nextLine();
 				System.out.println("Select how long you want to play between 0-10");
 				playTime = input.nextInt();
@@ -73,32 +77,31 @@ public class VirtualPetShelterApp {
 			if (userChoice == 4) {
 				System.out.println("We're so glad you'd like to adopt a pet!");
 				System.out.println("Please choose whom you'd like to adopt: Boris, Dima, Peago or Kiki?");
-				
-try {
-	String adoptChoice = input.nextLine();
-				switch (adoptChoice) {
-				case "Boris":
-					System.out.println("Passes out.");
-					break;
-				case "Peago":
-					System.out.println("Gets up slowly and waddles to you");
-					break;
-				case "Kiki":
-					System.out.println("Already found half your lost items in the car");
-					break;
-				case "Dima":
-					System.out.println("Soars to freedom without looking back");
-					break;
-				default:
-					System.out.println("Type in the name right?");			
-				}
-				
-}
-catch (Exception e) {
 
-	}
+				try {
+					String adoptChoice = input.nextLine();
+					switch (adoptChoice) {
+					case "Boris":
+						System.out.println("Passes out.");
+						break;
+					case "Peago":
+						System.out.println("Gets up slowly and waddles to you");
+						break;
+					case "Kiki":
+						System.out.println("Already found half your lost items in the car");
+						break;
+					case "Dima":
+						System.out.println("Soars to freedom without looking back");
+						break;
+					default:
+						System.out.println("Type in the name right?");
+					}
+
+				} catch (Exception e) {
+
+				}
 			}
-			if(userChoice == 5) {
+			if (userChoice == 5) {
 				System.out.println("We'd love to take care of a new pet!");
 				System.out.println("What is the pet's name?");
 				String admitPetName = input.nextLine();
@@ -106,14 +109,14 @@ catch (Exception e) {
 				String description = input.nextLine();
 				VirtualPet newP = new VirtualPet(admitPetName, description);
 				myPet.add(newP);
-				
+
 			}
-			if(userChoice == 6) {
+			if (userChoice == 6) {
 				System.out.println("So sorry to see you go, come back again!");
 				System.exit(0);
 			}
 			myPet.tick();
 		}
-
+		input.close();
 	}
 }
