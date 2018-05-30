@@ -15,9 +15,18 @@ The user is able to feed, water, play with, adopt and remove pets from the shelt
 * Contains methods which:
 
 	*Find a pet by name
+
 	*Add a new pet to the collection
+
 	*Feeds all the pets
+
 	*Waters all the pets
+
 	*Plays with an individual pet
+
 	*Removes a pet from the collection
-	*Tick method which calls a method from Virtual Pet class to each pet, changing the parameters each time the game loops. 
+
+	*Cleans individual Pet cages
+	
+	*Tick method which calls a method from Virtual Pet class 
+	to each pet, changing the parameters each time the game loops. 
