@@ -1,7 +1,5 @@
 package virtualpetshelter;
 
-import static org.hamcrest.Matchers.closeTo;
-
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
@@ -24,20 +22,20 @@ public class VirtualPetShelterApp {
 		Boolean quit = false;
 		while (quit == false) {
 			System.out.println("The pet's stats are: ");
-			System.out.println("Name   \t|Hunger\t|Thirst\t| Boredom");
-			System.out.println("-------------------------------------------------");
+			System.out.println("Name\t|Hunger\t|Thirst\t|Boredom|Dirt Level");
+			System.out.println("--------------------------------------------");
 			for (VirtualPet eachPet : myPet.getAllPets()) {
 				System.out.println(eachPet.getPetName() + "  \t|" + eachPet.getHunger() + "\t|" + eachPet.getThirst()
-						+ "\t|" + eachPet.getBoredom());
+						+ "\t|" + eachPet.getBoredom() + "\t|" + eachPet.getDirtLevel());
 			}
 			System.out.println("What would you like to do next?");
 			System.out.println(
-					"1. Feed Pets\n2. Water Pets\n3. Play with a pet\n4. Adopt a pet\n5. Admit a pet\n6. Quit");
+					"1. Feed Pets\n2. Water Pets\n3. Play with a pet\n4. Adopt a pet\n5. Admit a pet\n6. Clean a cage\n7. Quit");
 			int userChoice = input.nextInt();
-			while (userChoice < 1 || userChoice > 6) {
+			while (userChoice < 1 || userChoice > 7) {
 				System.out.println("Please choose from the following numbers: ");
 				System.out.println(
-						"1.Feed Pets\n2. Water Pets\3. Play with a pet\4.Adopt a pet\n5. Admit a pet\n6. Quit");
+						"1. Feed Pets\n2. Water Pets\n3. Play with a pet\n4. Adopt a pet\n5. Admit a pet\n6. Quit");
 				userChoice = input.nextInt();
 			}
 			input.nextLine();
@@ -54,7 +52,7 @@ public class VirtualPetShelterApp {
 				int playTime;
 				System.out.println("Ok, so you'd like to play! Please choose one: ");
 				for (VirtualPet eachPet : myPet.getAllPets()) {
-				System.out.println("[" + eachPet.getPetName() + "]" +"  "+ eachPet.getDescription());
+					System.out.println("[" + eachPet.getPetName() + "]" + "  " + eachPet.getDescription());
 				}
 				String petChoice = input.nextLine();
 				System.out.println("Select how long you want to play between 0-10");
@@ -112,6 +110,14 @@ public class VirtualPetShelterApp {
 
 			}
 			if (userChoice == 6) {
+				System.out.println("Ooh, you want to get your hands dirty! Whose cage would you like to clean?");
+				for (VirtualPet eachPet : myPet.getAllPets()) {
+					System.out.println("[" + eachPet.getPetName() + "]" + "  " + eachPet.getDescription());
+				}
+				String petToClean = input.nextLine();
+				myPet.cleanACage(petToClean);
+			}
+			if (userChoice == 7) {
 				System.out.println("So sorry to see you go, come back again!");
 				System.exit(0);
 			}

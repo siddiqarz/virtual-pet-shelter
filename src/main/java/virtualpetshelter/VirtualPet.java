@@ -11,16 +11,18 @@ public class VirtualPet {
 	private int hunger = rand.nextInt(10) + 1;
 	private int thirst = rand.nextInt(10) + 1;
 	private int boredom = rand.nextInt(10) + 1;
+	private int cleanliness = rand.nextInt(10) + 1;
 
 	public VirtualPet(String petName, String description) {
 		this.petName = petName;
 		this.setDescription(description);
 	}
 
-	public VirtualPet(String petName, String Description, int hunger, int thirst, int boredom) {
+	public VirtualPet(String petName, String Description, int hunger, int thirst, int boredom, int cleanliness) {
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.boredom = boredom;
+		this.cleanliness = cleanliness;
 	}
 
 	public String getPetName() {
@@ -40,7 +42,7 @@ public class VirtualPet {
 
 	public void play(int playTime) {
 		boredom = boredom - playTime;
-		if(boredom<0) {
+		if (boredom < 0) {
 			boredom = 0;
 		}
 	}
@@ -51,7 +53,7 @@ public class VirtualPet {
 
 	public void water() {
 		thirst -= 10;
-		if (thirst <0){
+		if (thirst < 0) {
 			thirst = 0;
 		}
 	}
@@ -59,7 +61,6 @@ public class VirtualPet {
 	public int getThirst() {
 		return thirst;
 	}
-
 
 	public void tickIt() {
 
@@ -74,5 +75,13 @@ public class VirtualPet {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void clean() {
+		cleanliness = cleanliness - 3;
+	}
+
+	public int getDirtLevel() {
+		return cleanliness;
 	}
 }
